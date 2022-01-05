@@ -7,19 +7,33 @@ import {
   StyleSheet,
   Text,
   View,
+  StatusBar,
 } from 'react-native';
 import {colors} from '../global/styles';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {accountData} from '../global/Data';
+import {accountData, topCryptoData, newsData} from '../global/Data';
 import Swiper from 'react-native-swiper';
 
-export default function HomeScreen() {
+
+export default function HomeScreen({navigation}) {
   const [indexCheck, setIndexCheck] = useState('0');
   return (
     <View style={styles.container}>
+      <StatusBar translucent backgroundColor={colors.general} />
       <View style={styles.homeTop}>
-        <View style={styles.circle}></View>
-        <Text style={styles.addCash}>Add Cash</Text>
+        <View style={styles.circle}>
+          <Image
+            style={{height: 40, width: 40, borderRadius: 100 / 2}}
+            source={require('../../images/Edmund.png')}
+          />
+        </View>
+        <Text
+          onPress={() => {
+            navigation.navigate('NewsList');
+          }}
+          style={styles.addCash}>
+          Add Cash
+        </Text>
         <View style={styles.notification}>
           <FontAwesome5
             name={'plus-circle'}
@@ -33,73 +47,94 @@ export default function HomeScreen() {
           <Text style={styles.notificationNo}>0</Text>
         </View>
       </View>
-      <View style={styles.dashboard}>
-        <View style={styles.dashboardText}>
-          <Text style={styles.tBalance}>Total balance</Text>
-          <Text style={styles.Balance}>$5,460.05</Text>
-          <Text style={styles.highAndLows}>+7.28%</Text>
-        </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.dashboard}>
+          <View style={styles.dashboardText}>
+            <Text style={styles.tBalance}>Total balance</Text>
+            <Text style={styles.Balance}>$5,460.05</Text>
+            <Text style={styles.highAndLows}>+7.28%</Text>
+          </View>
 
-        <View style={styles.actionButtons}>
-          <View style={styles.actionButtonCircle}>
-            <View style={styles.message2}>
-              <FontAwesome5
-                name={'arrow-up'}
-                size={25}
-                solid
-                color={colors.general}
-              />
+          <View style={styles.actionButtons}>
+            <Pressable
+              onPress={() => {
+                navigation.navigate('SendCrypto');
+              }}>
+              <View style={styles.actionButtonCircle}>
+                <View style={styles.message2}>
+                  <FontAwesome5
+                    name={'arrow-up'}
+                    size={25}
+                    solid
+                    color={colors.general}
+                  />
+                </View>
+                <Text style={styles.desc}>Send</Text>
+              </View>
+            </Pressable>
+            <View
+              onPress={() => {
+                navigation.navigate('FullNews');
+              }}
+              style={styles.actionButtonCircle}>
+              <View style={styles.message2}>
+                <FontAwesome5
+                  name={'arrow-down'}
+                  size={25}
+                  solid
+                  color={colors.general}
+                />
+              </View>
+              <Text style={styles.desc}>Receive</Text>
             </View>
-            <Text style={styles.desc}>Send</Text>
-          </View>
-          <View style={styles.actionButtonCircle}>
-            <View style={styles.message2}>
-              <FontAwesome5
-                name={'arrow-down'}
-                size={25}
-                solid
-                color={colors.general}
-              />
+            <Pressable 
+             onPress={() => {
+              navigation.navigate('PtoP');
+            }}
+            >
+            <View
+              
+              style={styles.actionButtonCircle}>
+              <View style={styles.message2}>
+                <FontAwesome5
+                  name={'sync-alt'}
+                  size={25}
+                  solid
+                  color={colors.general}
+                />
+              </View>
+              <Text style={styles.desc}>P2P</Text>
             </View>
-            <Text style={styles.desc}>Receive</Text>
-          </View>
-          <View style={styles.actionButtonCircle}>
-            <View style={styles.message2}>
-              <FontAwesome5
-                name={'sync-alt'}
-                size={25}
-                solid
-                color={colors.general}
-              />
-            </View>
-            <Text style={styles.desc}>P2P</Text>
-          </View>
-          <View style={styles.actionButtonCircle}>
-            <View style={styles.message2}>
-              <FontAwesome5
-                name={'exchange-alt'}
-                size={25}
-                solid
-                color={colors.general}
-              />
-            </View>
-            <Text style={styles.desc}>Exchange</Text>
+            </Pressable>
+
+            <Pressable
+              onPress={() => {
+                navigation.navigate('ExchangeCrypto');
+              }}>
+              <View style={styles.actionButtonCircle}>
+                <View style={styles.message2}>
+                  <FontAwesome5
+                    name={'exchange-alt'}
+                    size={25}
+                    solid
+                    color={colors.general}
+                  />
+                </View>
+                <Text style={styles.desc}>Exchange</Text>
+              </View>
+            </Pressable>
           </View>
         </View>
-      </View>
-      <View style={styles.under}>
-        <Text style={styles.text1}>All Assets</Text>
-        <FontAwesome5
-          name={'exclamation-circle'}
-          size={20}
-          solid
-          color={colors.major}
-        />
-        <Text style={styles.text2}>See All</Text>
-      </View>
-      <ScrollView
-        stickyHeaderIndices={[0]}
-        showsVerticalScrollIndicator={false}>
+        <View style={styles.under}>
+          <Text style={styles.text1}>All Assets</Text>
+          <FontAwesome5
+            name={'exclamation-circle'}
+            size={20}
+            solid
+            color={colors.major}
+          />
+          <Text style={styles.text2}>See All</Text>
+        </View>
         <View style={styles.flatListView}>
           <FlatList
             horizontal={true}
@@ -107,7 +142,7 @@ export default function HomeScreen() {
             data={accountData}
             keyExtractor={item => item.id}
             extraData={indexCheck}
-            renderItem={({item}) => (
+            renderItem={({item,index}) => (
               <Pressable
                 onPress={() => {
                   setIndexCheck(item.id);
@@ -142,7 +177,7 @@ export default function HomeScreen() {
           />
         </View>
         <View style={styles.slider}>
-          <Swiper autoplay ={true} loop={true}>
+          <Swiper autoplay={true} loop={true}>
             <View style={styles.slider1}>
               <Image
                 source={require('./img1.jpg')}
@@ -166,8 +201,98 @@ export default function HomeScreen() {
                 source={require('./img4.jpg')}
                 style={styles.sliderImage}
               />
-            </View> 
+            </View>
           </Swiper>
+        </View>
+        <View style={styles.under}>
+          <Text style={styles.text1}>Top Crypto</Text>
+          <FontAwesome5
+            name={'exclamation-circle'}
+            size={20}
+            solid
+            color={colors.major}
+          />
+          <Text style={styles.text2}>See All</Text>
+        </View>
+        <View style={styles.flatListView}>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={topCryptoData}
+            keyExtractor={item => item.id}
+            extraData={indexCheck}
+            renderItem={({item, index}) => (
+              <Pressable
+                onPress={() => {
+                  setIndexCheck(item.id);
+                }}>
+                <View style={styles.card2}>
+                  <View style={styles.percentage_change}>
+                    <View style={styles.circle2}>
+                      <Image
+                        style={{height: 40, width: 40, borderRadius: 30}}
+                        source={item.image}
+                      />
+                    </View>
+                    <View style={styles.percentage_change1}>
+                      <FontAwesome5
+                        name={'caret-up'}
+                        size={25}
+                        solid
+                        color={colors.up}
+                      />
+                      <Text style={styles.text7}>{item.percentage_change}</Text>
+                    </View>
+                  </View>
+                  <Text style={styles.text3}>{item.name}</Text>
+                  <Text style={styles.text4}>USD {item.usd_price}</Text>
+                </View>
+              </Pressable>
+            )}
+          />
+        </View>
+        <View style={styles.under}>
+          <Text style={styles.text1}>News</Text>
+          <FontAwesome5
+            name={'exclamation-circle'}
+            size={20}
+            solid
+            color={colors.major}
+          />
+          <Text
+            style={styles.text8}
+            onPress={() => {
+              navigation.navigate('AllNews');
+            }}>
+            See All
+          </Text>
+        </View>
+        <View style={styles.flatListView1}>
+          {newsData.map((item, index) => {
+            return (
+              <Pressable
+                onPress={() => {
+                  navigation.navigate('FullNews');
+                }}>
+                <View style={styles.news} key="{index}">
+                  <View style={styles.newsPics}>
+                    <Image
+                      style={{height: 100, width: 130, borderRadius: 30}}
+                      source={item.image}
+                    />
+                  </View>
+                  <View style={styles.newsPics1}>
+                    <Text style={styles.newsText}>{item.title}</Text>
+                    <Text style={styles.newsText1}>
+                      {item.source}
+                      {'  '}
+                      {item.dateTime}
+                    </Text>
+                  </View>
+                </View>
+              </Pressable>
+            );
+          })}
         </View>
       </ScrollView>
     </View>
@@ -181,11 +306,27 @@ const styles = StyleSheet.create({
   },
   flatListView: {
     marginLeft: 20,
-    marginTop: 20,
+    marginTop: 5,
+  },
+  flatListView: {
+    marginLeft: 20,
+    marginTop: 5,
+  },
+  flatListView1: {
+    height: 650,
+    marginLeft: 20,
+    marginTop: 5,
   },
   card1: {
     width: 155,
     height: 190,
+    marginLeft: 10,
+    backgroundColor: colors.grey3,
+    borderRadius: 20,
+  },
+  card2: {
+    width: 155,
+    height: 130,
     marginLeft: 10,
     backgroundColor: colors.grey3,
     borderRadius: 20,
@@ -242,6 +383,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 3,
   },
+  text8: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.up,
+    marginLeft: 220,
+  },
   message: {
     marginTop: 8,
   },
@@ -249,7 +396,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: 30,
     marginTop: 20,
-    height: 30,
+    height: 40,
   },
   message1: {
     marginTop: 3,
@@ -303,12 +450,12 @@ const styles = StyleSheet.create({
   },
   notification: {
     marginLeft: 5,
-    marginTop: 6,
+    marginTop: 11,
   },
   notification1: {
     flexDirection: 'row',
     marginLeft: 20,
-    marginTop: 6,
+    marginTop: 11,
   },
   notificationNo: {
     color: 'red',
@@ -318,13 +465,15 @@ const styles = StyleSheet.create({
   },
   homeTop: {
     flexDirection: 'row',
-    marginTop: 10,
+    marginTop: 47,
+    backgroundColor: colors.general,
+    height: 60,
   },
   addCash: {
     marginLeft: 155,
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 7,
+    marginTop: 12,
     color: '#210A54',
   },
   circle: {
@@ -333,6 +482,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightPink,
     borderRadius: 100 / 2,
     marginLeft: 30,
+    marginTop: 5,
   },
   actionButtonCircle: {
     width: 50,
@@ -363,28 +513,64 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: colors.grey3,
   },
-  sliderImage:{
-    borderRadius:20,
+  news: {
+    flexDirection: 'row',
+    width: 350,
+    height: 100,
+    borderRadius: 20,
+    marginLeft: 10,
+    marginTop: 5,
+    marginBottom: 25,
+  },
+  newsPics: {
+    width: 130,
+    height: 100,
+    borderRadius: 20,
+    marginLeft: 0,
+    marginTop: 0,
+  },
+  newsPics1: {
+    width: 213,
+    height: 100,
+    marginLeft: 7,
+    marginTop: 0,
+  },
+  newsText: {
+    width: 213,
+    height: 60,
+    borderRadius: 20,
+    marginLeft: 0,
+    marginTop: 0,
+    fontSize: 16,
+    color: colors.major,
+  },
+  newsText1: {
+    marginTop: 10,
+    fontSize: 12,
+    color: colors.major,
+  },
+  sliderImage: {
+    borderRadius: 20,
     height: '100%',
-    width: '100%'
+    width: '100%',
   },
   slider1: {
     flex: 1,
-    borderRadius:20,
+    borderRadius: 20,
     alignContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.grey1,
   },
   slider2: {
     flex: 1,
-    borderRadius:20,
+    borderRadius: 20,
     alignContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.grey2,
   },
   slider3: {
     flex: 4,
-    borderRadius:20,
+    borderRadius: 20,
     alignContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.grey3,

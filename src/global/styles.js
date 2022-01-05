@@ -1,6 +1,7 @@
 export const colors = {
     statusbar: "#F3F3F3",
     general: "#ffffff",
+    general_black: "#000000",
     major:"#210A54",
     grey1: "#808080",
     grey2: "#C4C4C4",
@@ -11,6 +12,7 @@ export const colors = {
 };
 export const parameters = {
     headerHeight: 80,
+    headerHeight2: 110,
     styledButton:{
         backgroundColor:"#210A54",
         alignContent: "center",
