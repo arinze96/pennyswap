@@ -5826,7 +5826,7 @@
   "resolved" "https://registry.npmjs.org/react-native-fontawesome/-/react-native-fontawesome-7.0.0.tgz"
   "version" "7.0.0"
 
-"react-native-gesture-handler@*", "react-native-gesture-handler@^2.0.0", "react-native-gesture-handler@>= 1.0.0":
+"react-native-gesture-handler@*", "react-native-gesture-handler@^2.0.0", "react-native-gesture-handler@> 1.0.0", "react-native-gesture-handler@>= 1.0.0":
   "integrity" "sha512-QJxUXrWcHUyita4j+FPlAokR8i9fmD5n88uE6W5rtxNi17U1jAjnkbtplFWYutFP7naat+f77sZSmjil2+/4RA=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.0.0.tgz"
   "version" "2.0.0"
@@ -5847,6 +5847,11 @@
   "resolved" "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
   "version" "1.3.1"
 
+"react-native-modalize@^2.0.13":
+  "integrity" "sha512-BMJlpTnpeDVp5LbbE6kdO+3+yLzowRvPgcIu1QCCM+//uY7oON4VcL8ISilSgAfOYeNQc6vhaD5chVtmpTl/dw=="
+  "resolved" "https://registry.npmjs.org/react-native-modalize/-/react-native-modalize-2.0.13.tgz"
+  "version" "2.0.13"
+
 "react-native-ratings@8.0.4":
   "integrity" "sha512-Xczu5lskIIRD6BEdz9A0jDRpEck/SFxRqiglkXi0u67yAtI1/pcJC76P4MukCbT8K4BPVl+42w83YqXBoBRl7A=="
   "resolved" "https://registry.npmjs.org/react-native-ratings/-/react-native-ratings-8.0.4.tgz"
@@ -5854,7 +5859,7 @@
   dependencies:
     "lodash" "^4.17.15"
 
-"react-native-reanimated@^2.2.4":
+"react-native-reanimated@*", "react-native-reanimated@^2.2.4":
   "integrity" "sha512-Nn648MfEEnTCEiWsl1YmfkojiLyV0NMY0EiRdDRbZNfJVfxBuyqhCxI/4Jd7aBi162qpgf8XK2mByYgvF4zLrQ=="
   "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.2.4.tgz"
   "version" "2.2.4"
@@ -5949,7 +5954,7 @@
     "whatwg-fetch" "^3.0.0"
     "ws" "^6.1.4"
 
-"react-native@*", "react-native@^0.66.0", "react-native@>= 0.62", "react-native@>=0.42.0", "react-native@>=0.57", "react-native@>=0.59.0", "react-native@0.66.0", "react-native@0.66.3":
+"react-native@*", "react-native@^0.66.0", "react-native@> 0.50.0", "react-native@>= 0.62", "react-native@>=0.42.0", "react-native@>=0.57", "react-native@>=0.59.0", "react-native@0.66.0", "react-native@0.66.3":
   "integrity" "sha512-B/dQpuvta9YvF5MihDWefoGlTvxzUHK5X5RjdrXHAu/ihTehJXxEA+m6z/tufp1ZUMDjU+tMZK6gnehzCuYfzw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.66.3.tgz"
   "version" "0.66.3"
@@ -6009,7 +6014,7 @@
     "react-shallow-renderer" "^16.13.1"
     "scheduler" "^0.20.2"
 
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@>=16.0", "react@>=16.8.1", "react@17.0.2":
+"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@> 15.0.0", "react@>=16.0", "react@>=16.8.1", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -6053,6 +6058,11 @@
   "integrity" "sha1-xYDXfvLPyHUrEySYBg3JeTp6wBw="
   "resolved" "https://registry.npmjs.org/readline/-/readline-1.3.0.tgz"
   "version" "1.3.0"
+
+"reanimated-bottom-sheet@^1.0.0-alpha.22":
+  "integrity" "sha512-NxecCn+2iA4YzkFuRK5/b86GHHS2OhZ9VRgiM4q18AC20YE/psRilqxzXCKBEvkOjP5AaAvY0yfE7EkEFBjTvw=="
+  "resolved" "https://registry.npmjs.org/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.22.tgz"
+  "version" "1.0.0-alpha.22"
 
 "recast@^0.20.3":
   "integrity" "sha512-E5qICoPoNL4yU0H0NoBDntNB0Q5oMSNh9usFctYniLBluTthi3RsQVBXIJNbApOlvSwW/RGxIuokPcAc59J5fQ=="

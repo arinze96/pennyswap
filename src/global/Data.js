@@ -249,3 +249,66 @@ export const newsData1 = [
   },
 
 ];
+
+export const friends = [
+  {
+    name: 'Carol Winestein',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '0',
+  },
+  {
+    name: 'Rhode Williams',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '1',
+  },
+  {
+    name: 'Janet widsor',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '2',
+  },
+  {
+    name: 'Carol fabaga',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '3',
+  },
+  {
+    name: 'Celestine whiteroll',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '4',
+  },
+  {
+    name: 'Andre beau',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '5',
+  },
+  {
+    name: 'Sterm Austwiser',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '6',
+  },
+  {
+    name: 'Garry Banister',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '7',
+  },
+  {
+    name: 'Maryln monreo',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '8',
+  },
+  {
+    name: 'Foster raul',
+    image: require('../../images/ethereum.jpg'),
+    dateTime: '2 days Ago',
+    id: '9',
+  },
+]

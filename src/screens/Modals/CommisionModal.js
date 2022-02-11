@@ -1,52 +1,8 @@
-import React, {useRef, useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Image,
-  FlatList,
-} from 'react-native';
-import Header2 from '../components/Header2';
-import {colors} from '../global/styles';
-import {Modalize} from 'react-native-modalize';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {Icon} from 'react-native-elements';
-import {friends} from '../global/Data';
-import { ScrollView } from 'react-native-gesture-handler';
+import React from 'react'
 
-export default function SendCrypto({
-  navigation,
-  pageTitle,
-  alignCaption,
-  desiredColor,
-}) {
-  const modalizeRef = useRef(null);
-  function onOpen() {
-    modalizeRef.current?.open();
-  }
-  function onClose() {
-    modalizeRef.current?.close();
-  }
-  const [indexCheck, setIndexCheck] = useState('0');
-
+function CommisionModal() {
   return (
-    <SafeAreaView forceInset={{top: 'always'}} style={styles.container}>
-      <Header2
-        type="arrow-left"
-        navigation={navigation}
-        pageTitle={'Send'}
-        alignCaption={122}
-        desiredColor={colors.lightPink}
-      />
-      <View style={styles.space}>
-        <TouchableOpacity onPress={onOpen}>
-          <Text style={{color: 'white'}}>Send Crypto</Text>
-        </TouchableOpacity>
-      </View>
-      <Modalize ref={modalizeRef} snapPoint={500}>
+    <Modalize ref={modalizeRef} snapPoint={800}>
         <View
           style={{
             flex: 1,
@@ -55,67 +11,67 @@ export default function SendCrypto({
           }}>
           <View style={styles.modalbottons0}>
             <TouchableOpacity onPress={onClose}>
-            <View style={styles.actionIcon} >
-              <FontAwesome5
-                name={'arrow-left'}
-                size={17}
-                solid
-                color={colors.major}
-                style={styles.card}
-              />
-            </View>
+              <View style={styles.actionIcon}>
+                <FontAwesome5
+                  name={'arrow-left'}
+                  size={17}
+                  solid
+                  color={colors.major}
+                  style={styles.card}
+                />
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.modalbottons}>
-            <Text style={styles.modalCaption}>Who Referred You?</Text>
-            <Text style={styles.desc9}>Claim the bonus with the username of the person that referred you</Text>
+            <Text style={styles.modalCaption}>Commission Earned</Text>
+            <Text style={{paddingLeft: '7%', paddingRight: '7%'}}>
+              Your Total Earning from referral. Pennyswap Rewards have been
+              limited to your first 10 successful referrals every month
+            </Text>
           </View>
-        </View>
-        <View style={styles.modalCaption0}>
-          <Text></Text>
-              <View style={styles.textInput2}>
-                <TextInput style={styles.textInput4}  />
-                <View>
-                  <Icon
-                    type="material"
-                    name="search"
-                    iconStyle={{color: colors.grey1}}
-                    style={styles.textInputIcon}
-                  />
-                </View>
+
+          <View style={styles.box1}>
+            <View style={styles.innerBox}>
+              <Text>YOU HAVE EARNED</Text>
+              <View style={styles.amount}>
+                <Text style={styles.amountNo}>PSP</Text>
+                <Text style={styles.amountNo1}>30000000</Text>
               </View>
             </View>
+          </View>
+          <View style={styles.box1}>
+            <View style={styles.innerBox1}>
+              <View style={styles.amount1}>
+                <Text style={styles.desc1}>How do i earn on pennyswap?</Text>
+                <Text>
+                  We will pay you a commission on the 15th day from when your
+                  referral joins pennyswap
+                </Text>
+              </View>
+              <View style={styles.exclamation}>
+                <FontAwesome5
+                  name={'exclamation'}
+                  size={25}
+                  solid
+                  color={colors.major}
+                  style={styles.card}
+                />
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.stages}>
+            <TouchableOpacity style={styles.refLink1}>
+              <Text style={styles.text11}>Invite Friends</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </Modalize>
-    </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  noOfFriends: {
-    width: '100%',
-    height: 30,
-    flexDirection:'row',
-    paddingLeft: 30,
-    marginTop: 15,
-  },
-  noOfFriends1: {
-    color: colors.major,
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  top: {
-    fontSize: 22,
-    color: colors.major,
-  },
-  top1: {
-    fontSize: 18,
-    color: colors.major,
-  },
-  desc9: {paddingLeft: '7%', paddingRight: '7%'},
-  desc1: {color: colors.major, fontWeight: 'bold', marginBottom: 5},
+    desc1: {color: colors.major, fontWeight: 'bold', marginBottom: 5},
   exclamation: {
     width: 60,
     marginLeft: 10,
@@ -166,14 +122,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  box10: {
+  box1: {
     width: '100%',
-    height: 380,
-    padding: 30,
-    // alignContent: 'center',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor:'gray'
+    height: 220,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   refLink: {
     width: '80%',
@@ -258,20 +212,17 @@ const styles = StyleSheet.create({
   },
   modalCaption0: {
     width: '100%',
-    height: 80,
-    // marginTop:20,
+    height: 70,
     alignContent: 'center',
     alignItems: 'center',
-    justifyContent:'center',
-    backgroundColor:'gray'
   },
   textInputIcon: {
     marginRight: 20,
   },
   textInput2: {
     borderWidth: 1,
-    height: 50,
-    width: 350,
+    height: 35,
+    width: 300,
     borderColor: '#210A54',
     borderRadius: 30,
     marginBottom: 20,
@@ -344,10 +295,9 @@ const styles = StyleSheet.create({
   },
   modalbottons1: {
     flexDirection: 'row',
-    backgroundColor:'#ffffe6',
     width: '100%',
     height: 55,
-    marginTop: 5,
+    marginTop: 45,
     marginBottom: 5,
   },
   modalbottons2: {
@@ -357,17 +307,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 5,
   },
-  space: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 500,
-    width: '100%',
-    backgroundColor: 'indigo',
-  },
-  bottom: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 15,
-    borderRadius: 20,
-  },
-});
+})
+
+export default CommisionModal
