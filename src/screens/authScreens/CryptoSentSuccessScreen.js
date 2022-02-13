@@ -1,10 +1,11 @@
+
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {Button, Image} from 'react-native-elements';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {colors, parameters} from '../../global/styles';
 
-export default function SignUpSuccess({navigation}) {
+export default function CryptoSentSuccessScreen({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.textPosition}>
@@ -18,14 +19,18 @@ export default function SignUpSuccess({navigation}) {
 
       <View style={styles.textPosition1}>
         <Text style={styles.title2}>
-          Successfully {'\n'} Created An Account
+          Successfully Sent
         </Text>
-        <Text style={{textAlign: 'center'}}>23rd of April 2022</Text>
+        <Text style={styles.info}>$24,000.79</Text>
+        <Text style={styles.info}>4.92 ETH</Text>
+        <Text style={{textAlign: 'center', marginTop:5}}>23rd of April 2022</Text>
+
+       
       </View>
 
       <View style={styles.button1}>
         <Button
-          title="Continue"
+          title="Done"
           buttonStyle={parameters.styledButton}
           titleStyle={parameters.buttonTitle}
           onPress={() => navigation.navigate('SignInScreen')}
@@ -37,8 +42,13 @@ export default function SignUpSuccess({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    //   flex: 1,
+      flex: 1,
     backgroundColor: 'white',
+  },
+  info:{
+      marginTop:10,
+      fontSize:25,
+      color:colors.major
   },
   title1: {
     color: '#210A54',
@@ -55,7 +65,7 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 200 / 2,
     marginLeft: 100,
-    marginTop: 120,
+    marginTop: 80,
     borderWidth: 5,
     borderColor: 'green',
     alignItems: 'center',
@@ -68,7 +78,7 @@ const styles = StyleSheet.create({
   },
   button1: {
     marginHorizontal: 20,
-    marginVertical: 200,
+    marginVertical: '15%',
     borderRadius: 30,
   },
 });

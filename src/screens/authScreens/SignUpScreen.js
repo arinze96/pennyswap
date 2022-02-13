@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 // import { CheckBox} from "react-native";
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {Button, Icon, CheckBox} from 'react-native-elements';
@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import {colors, parameters} from '../../global/styles';
 
 export default function SignUpScreen({navigation}) {
-    const [isSelected, setSelected] = useState(false);
+  const [isSelected, setSelected] = useState(false);
   return (
     <View style={styles.container}>
       <Header type="arrow-left" navigation={navigation} />
@@ -81,26 +81,26 @@ export default function SignUpScreen({navigation}) {
         </View>
       </View>
 
- <View style={styles.acceptTandC}>
- <CheckBox
-     title = "i accept the terms and conditions"
-     checkedIcon="check"
-     uncheckedColor="square-o"
-     width="60%"
-     checkedColor="green"
-     uncheckedColor="red"
-     checked={isSelected}
-     onPress={() => {
-         setSelected(!isSelected)
-     }}
-   />
- </View>
+      <View style={styles.acceptTandC}>
+        <CheckBox
+          title="i accept the terms and conditions"
+          checkedIcon="check"
+          uncheckedColor="square-o"
+          width="60%"
+          checkedColor="green"
+          uncheckedColor="red"
+          checked={isSelected}
+          onPress={() => {
+            setSelected(!isSelected);
+          }}
+        />
+      </View>
       <View style={styles.button1}>
         <Button
           title="SIGNUP"
           buttonStyle={parameters.styledButton}
           titleStyle={parameters.buttonTitle}
-          onPress={() => navigation.navigate('SignUpSuccess')}
+          onPress={() => navigation.navigate('ExchangeConfirmedScreen')}
         />
       </View>
       <View style={styles.title5}>
@@ -121,7 +121,6 @@ export default function SignUpScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-
   container: {
     // flex: 1,
     backgroundColor: 'white',
@@ -206,10 +205,10 @@ const styles = StyleSheet.create({
     marginVertical: 50,
     borderRadius: 30,
   },
-  acceptTandC:{
-    marginTop:-25,
-    marginLeft:10,
-    alignContent:"center",
-    marginBottom: -30
-  }
+  acceptTandC: {
+    marginTop: -25,
+    marginLeft: 10,
+    alignContent: 'center',
+    marginBottom: -30,
+  },
 });

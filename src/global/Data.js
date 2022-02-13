@@ -312,3 +312,30 @@ export const friends = [
     id: '9',
   },
 ]
+
+export const Onboarding = [
+  {
+    id: '0',
+    title: 'Track and manage your crypto assets',
+    description: 'Store, track and manage all your cryptocurrencies with ease',
+    image: require('../../images/ob1.jpg')
+  },
+  {
+    id: '1',
+    title: 'Best Peer to Peer Cryptocurrency Exchange',
+    description: 'Exchange your crypto assets to your local currency with other peers',
+    image: require('../../images/ob2.jpg')
+  },
+  {
+    id: '2',
+    title: 'Trade and Exchange Crypto Asset',
+    description: 'Fast and Secure way to swap and purchase digital asset',
+    image: require('../../images/ob3.jpg')
+  },
+  {
+    id: '3',
+    title: 'Secure and Reliable',
+    description: 'Our securty features are i n place to secure your digital asset',
+    image: require('../../images/ob5.png')
+  }
+]

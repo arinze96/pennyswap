@@ -13,9 +13,17 @@ import Header2 from '../components/Header2';
 import {colors} from '../global/styles';
 import {Modalize} from 'react-native-modalize';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {Icon} from 'react-native-elements';
-import {friends} from '../global/Data';
-import { ScrollView } from 'react-native-gesture-handler';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import { Icon } from 'react-native-elements';
+
+const numbers = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
 
 export default function SendCrypto({
   navigation,
@@ -30,6 +38,8 @@ export default function SendCrypto({
   function onClose() {
     modalizeRef.current?.close();
   }
+
+ 
   const [indexCheck, setIndexCheck] = useState('0');
 
   return (
@@ -45,8 +55,11 @@ export default function SendCrypto({
         <TouchableOpacity onPress={onOpen}>
           <Text style={{color: 'white'}}>Send Crypto</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={onOpen}>
+          <Text style={{color: 'white'}}>Share</Text>
+        </TouchableOpacity>
       </View>
-      <Modalize ref={modalizeRef} snapPoint={500}>
+      <Modalize ref={modalizeRef} snapPoint={800}>
         <View
           style={{
             flex: 1,
@@ -55,36 +68,61 @@ export default function SendCrypto({
           }}>
           <View style={styles.modalbottons0}>
             <TouchableOpacity onPress={onClose}>
-            <View style={styles.actionIcon} >
-              <FontAwesome5
-                name={'arrow-left'}
-                size={17}
-                solid
-                color={colors.major}
-                style={styles.card}
-              />
-            </View>
+              <View style={styles.actionIcon}>
+                <FontAwesome5
+                  name={'arrow-left'}
+                  size={17}
+                  solid
+                  color={colors.major}
+                  style={styles.card}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={styles.actionIcon1}>
+                <Text style={{color: colors.major}}>Next</Text>
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.modalbottons}>
-            <Text style={styles.modalCaption}>Who Referred You?</Text>
-            <Text style={styles.desc9}>Claim the bonus with the username of the person that referred you</Text>
+            <Text style={styles.modalCaption}>Withdraw Cash</Text>
+            <Text style={styles.desc9}>
+               Type in the amount you want to withdraw to a bank account
+            </Text>
           </View>
         </View>
-        <View style={styles.modalCaption0}>
-          <Text></Text>
-              <View style={styles.textInput2}>
-                <TextInput style={styles.textInput4}  />
-                <View>
-                  <Icon
-                    type="material"
-                    name="search"
-                    iconStyle={{color: colors.grey1}}
-                    style={styles.textInputIcon}
-                  />
+        <View style={styles.howmuch}>
+          <Text style={[styles.cashAmount]}>NGN</Text>
+          <Text style={[styles.cashAmount1]}>5,000</Text>
+        </View>
+
+        <View style={styles.botonContainer}>
+            {numbers.map((item, index) => {
+              return (
+                <View key={index} style={styles.numPadWrapper}>
+                  {item.map(number => {
+                    return (
+                      <View key={number} style={styles.numPad}>
+                        <Text style={styles.numPadNumber}>{number}</Text>
+                      </View>
+                    );
+                  })}
                 </View>
+              );
+            })}
+            <View style={styles.numPadWrapper}>
+              <View style={styles.numPad}>
+                <Text style={styles.numPadNumber}>.</Text>
+              </View>
+              <View style={styles.numPad}>
+                <Text style={styles.numPadNumber}>0</Text>
+              </View>
+              <View style={styles.numPad}>
+                <Icon name="backspace" size={24} color="#210A54" />
               </View>
             </View>
+          </View>
+        
       </Modalize>
     </SafeAreaView>
   );
@@ -94,10 +132,57 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  botonContainer:{
+    width: wp('100%'), 
+    height: hp('40%'), 
+    alignContent:'center',
+    justifyContent:'center',
+    alignItem:'center',
+    paddingHorizontal: 40,
+  },
+  numPadWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginVertical: 20,
+    width: wp('80%'), 
+    height: hp('4.5%'), 
+  },
+  numPad: {
+    alignSelf: 'center',
+  },
+  numPadNumber: {
+    fontWeight: 'bold',
+    color: colors.major,
+    fontSize: 24,
+  },
+  cashAmount:{
+    fontSize:20,
+    color: colors.grey2
+  },
+  cashAmount1:{
+    fontSize:30,
+    fontWeight:'bold'
+  },
+  howmuch:{
+    flexDirection:'row',
+    width: wp('100%'), 
+    height: hp('10%'), 
+    paddingVertical:15,
+    // backgroundColor:'gray',
+    alignContent:'center',
+    justifyContent:'center',
+    alignItem:'center',
+  },
+  modalbottons0: {
+    flexDirection: 'row',
+    paddingLeft: 30,
+    paddingRight: 30,
+    justifyContent: 'space-between',
+  },
   noOfFriends: {
     width: '100%',
     height: 30,
-    flexDirection:'row',
+    flexDirection: 'row',
     paddingLeft: 30,
     marginTop: 15,
   },
@@ -114,7 +199,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.major,
   },
-  desc9: {paddingLeft: '7%', paddingRight: '7%'},
+  desc9: {paddingLeft: '9%', paddingRight: '9%'},
+  desc19: {paddingLeft: '9%', paddingRight: '9%', marginTop:10},
   desc1: {color: colors.major, fontWeight: 'bold', marginBottom: 5},
   exclamation: {
     width: 60,
@@ -258,19 +344,19 @@ const styles = StyleSheet.create({
   },
   modalCaption0: {
     width: '100%',
-    height: 80,
-    // marginTop:20,
+    height: 60,
+    paddingTop: 18,
     alignContent: 'center',
     alignItems: 'center',
-    justifyContent:'center',
-    backgroundColor:'gray'
+    justifyContent: 'center',
+    // backgroundColor:'gray'
   },
   textInputIcon: {
     marginRight: 20,
   },
   textInput2: {
     borderWidth: 1,
-    height: 50,
+    height: 40,
     width: 350,
     borderColor: '#210A54',
     borderRadius: 30,
@@ -312,9 +398,20 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     backgroundColor: colors.lightPink,
-    marginLeft: '4%',
+    // marginLeft: '4%',
     marginTop: 10,
     alignContent: 'center',
+    alignItems: 'center',
+  },
+  actionIcon1: {
+    width: 80,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.lightPink,
+    // marginLeft: '4%',
+    marginTop: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   modalCaption: {
@@ -344,7 +441,7 @@ const styles = StyleSheet.create({
   },
   modalbottons1: {
     flexDirection: 'row',
-    backgroundColor:'#ffffe6',
+    backgroundColor: '#ffffe6',
     width: '100%',
     height: 55,
     marginTop: 5,

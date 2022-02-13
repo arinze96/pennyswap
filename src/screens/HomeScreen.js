@@ -129,7 +129,7 @@ export default function HomeScreen({navigation}) {
 
             <Pressable
               onPress={() => {
-                navigation.navigate('ExchangeCrypto');
+                navigation.navigate('VerificationPage');
               }}>
               <View style={styles.actionButtonCircle}>
                 <View style={styles.message2}>

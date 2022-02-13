@@ -16,6 +16,9 @@ target 'pennywsap' do
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  pod 'RNShare', :path => '../node_modules/react-native-share'
+
+
   target 'pennywsapTests' do
     inherit! :complete
     # Pods for testing
